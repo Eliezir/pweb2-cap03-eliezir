@@ -31,6 +31,16 @@ else if (req.method === 'GET' && req.url.startsWith('/saudacao/')) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end(`Olá, ${nome}!`);
   }
+else if (req.method === 'POST' && req.url === '/echo') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk;
+    });
+    req.on('end', () => {
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.end(body);
+    });
+  }
 else {
   res.writeHead(404, { 'Content-Type': 'text/plain' });
   res.end('Não encontrado');
