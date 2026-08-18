@@ -22,6 +22,11 @@ if (req.method === 'GET' && req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Olá, Mundo!');
   }
+else {
+  res.writeHead(404, { 'Content-Type': 'text/plain' });
+  res.end('Não encontrado');
+}
+
 });
 
 server.listen(PORT, () => console.log(`Servidor em http://localhost:${PORT}`));
